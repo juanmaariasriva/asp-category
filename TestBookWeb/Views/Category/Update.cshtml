@@ -1,0 +1,39 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Editar categoria</h1>
+            <div asp-validation-summary="All"></div>
+        </div>
+    </div>
+</div>
+<form method="post" asp-action="Update">
+    <fieldset>
+        <div class="form-group">
+            <label asp-for="Name" for="exampleInputEmail1" class="form-label mt-4">Nombre</label>
+            <input asp-for="Name" type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Nombre">
+            <small id="emailHelp" class="form-text text-muted">Ingrese un nombre de varios caracteres.</small>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DisplayOrder" for="exampleSelect1" class="form-label mt-4">Orden</label>
+            <select asp-for="DisplayOrder" class="form-select" id="order">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary my-2 my-sm-0">Cancelar</a>
+    </fieldset>
+</form>
+
+
+

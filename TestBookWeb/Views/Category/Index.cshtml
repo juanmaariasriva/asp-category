@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+@if(TempData["success"] != null){
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Mensaje: </strong> @TempData["success"]
+    </div>
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1>Categorias</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Create" class="btn btn-primary my-2 my-sm-0" type="submit">Agregar</a>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr class="table-dark">
+            <th scope="row">
+                Category Name
+            </th>
+            <th scope="row">
+                Category Order
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-info">
+                <td width="50%">
+                    @item.Name
+                </td>
+                <td width="30%">
+                    @item.DisplayOrder
+                </td>
+                <td width="20%">
+                    <a asp-controller="Category" asp-action="Update" asp-route-id="@item.Id" class="btn btn-secondary my-2 my-sm-0" type="submit">Editar</a>
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary my-2 my-sm-0" type="submit">Quitar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
